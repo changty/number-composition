@@ -149,13 +149,32 @@ html, body {
 	width: 25vmin;
 	height: 25vmin;
 
+	/* RGB colors and opacity. 0 full opacity, 1 no opacity */
+	background: rgba(200,200,200, .8);
+}
+
+/*
+	Place to put the value. We need a separate container to enable timer
+*/
+.value {
+	/* fill the parent container */
+	display:block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+
+	z-index: 2; /* .value before .timer */
+
+	/* for text */
 	line-height: 25vmin;
 	text-align:center;
 	font-size: 10vmin;
 	font-family: "Luckiest Guy", Arial, Verdana, Tahoma;
-
-	/* RGB colors and opacity. 0 full opacity, 1 no opacity */
-	background: rgba(200,200,200, .8);
+	color: #f1f1f1;
 
 	/* Prevent selecting text inside container */
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -165,6 +184,28 @@ html, body {
 	-ms-user-select: none;       /* IE/Edge */
 	user-select: none;           /* non-prefixed version, currently
 	                                not supported by any browser */
+}
+
+/*
+	Background style for the timer (animated bar that get's smaller)
+*/
+.timer {
+	position: absolute; 
+	display: block;
+	bottom: 0;
+	left: 0; 
+	right: 0;
+	height: 100%;
+
+	z-index: 1; /* Set .timer behind .value */
+
+	background: #27ae60;
+
+	animation-name: timer; /* scroll to the bottom to modify the keyframes */
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+	animation-duration: 10s; /* This is changed in JS */
+
 }
 
 /*
@@ -212,4 +253,44 @@ html, body {
 	font-family: "Luckiest Guy", Arial, Verdana, Tahoma;
 	color: #f1f1f1;
 
+}
+
+
+/* 
+	Timer animation keyframes 
+*/ 
+
+/* Chrome, Safari, Opera */ 
+@-moz-keyframes timer {
+    from {
+    	height: 100%;
+    	background: #27ae60;
+    }
+    to {
+    	height: 0%;
+    	background: #c0392b;
+    }
+} 
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes timer {
+    from {
+    	height: 100%;
+    	background: #27ae60;
+    }
+    to {
+    	height: 0%;
+    	background: #c0392b;
+    }
+} 
+
+/* Standard syntax */ 
+@keyframes timer {
+    from {
+    	height: 100%;
+    	background: #27ae60;
+    }
+    to {
+    	height: 0%;
+    	background: #c0392b;
+    }
 }

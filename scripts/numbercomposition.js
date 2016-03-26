@@ -22,6 +22,8 @@ NumberComposition = function(options) {
 	self.submit = self.options.submit; 
 	self.sendAnswer = self.options.sendAnswer; 
 	self.lifes = self.options.lifes; 
+	self.useTimer = self.options.useTimer;
+	self.time = self.options.time;
 
 	// Helper variables to follow the state of the game
 	self.isGameOver = false; 
@@ -61,8 +63,6 @@ NumberComposition.prototype.start = function() {
 
 	self.drawGameArea();
 	self.nextProblem();
-	console.log("the game has begun!");
-
 }
 
 // Draw the game area and prepare needed containers
@@ -79,16 +79,17 @@ NumberComposition.prototype.drawGameArea = function() {
 
 	// Container for the question/target value
 	// Container is later available via self.targetValueContainer
-	self.targetValueContainer = $('<div class="targetValue"></div>');
+	self.targetValueContainer = $('<div class="targetValue"><span class="timerContainer"></span><span class="value"></span></div>');
 	// Add targetValue to gamearea
 	self.parent.append(self.targetValueContainer); 
+	// shortcut for setting targetValue
+	self.targetValue = $('.value'); 
 
 	// Container for current value (selected options)
 	// Container is later available via self.currentValueContainer
 	self.currentValueContainer = $('<div class="currentValue"></div>'); 
 	// Add currentValue to gamearea
 	self.parent.append(self.currentValueContainer);
-
 
 	// Container for lifes
 	// Container is later available via self.lifesContainer
@@ -102,11 +103,24 @@ NumberComposition.prototype.drawGameArea = function() {
 // and show question (the target number)
 NumberComposition.prototype.nextProblem = function() {
 	var self = this; 
-
+	console.log("nextProblem");
 	self.currentData = self.data[self.currentQuestion]; 
+
 	// Update options
 	self.updateOptions(self.currentData.options);
-	self.targetValueContainer.html(self.currentData.question); 
+
+	// If timer is enabled, start it now
+	if(self.useTimer) {
+		// option-buttons will appear with slight delay, 
+		// that's why also the timer should have a delay.
+		setTimeout(function() {
+			self.startTimer(); 
+		}, 1000);
+	}
+	
+	// Update the target value
+	self.targetValue.html(self.currentData.question); 
+	// Update current value
 	self.currentValueContainer.html(self.currentData.startValue);
 }
 
@@ -232,6 +246,10 @@ NumberComposition.prototype.calculate = function() {
 NumberComposition.prototype.correctAnswer = function(answers) {
 	var self = this; 
 
+	if(self.useTimer) {
+		self.stopTimer();
+	}
+
 	console.log("correct answer"); 
 	self.currentQuestion++; 
 
@@ -260,23 +278,33 @@ NumberComposition.prototype.correctAnswer = function(answers) {
 // Handle wrong answer. Wrong answer will loose one life and will start current level all over again
 NumberComposition.prototype.wrongAnswer = function(answers) {
 	var self = this; 
+	console.log("wrong answer");
+
+	if(self.useTimer) {
+		self.stopTimer();
+	}
 
 	// Save the answer
 	self.sendAnswer({problem: self.currentData, answer: answers});
 
+	// remove one life
 	self.updateLifes();
 
-
-	// Animte the target
+	// Animte the target value container to "shake it's head" 
 	self.targetValueContainer.addClass('animated shake'); 
 	$('.targetValue').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
 		// When animation end fires, this function is executed
-		function() {
+		function(e) {
+			// for some reason the event bubbles from timer and messes up with this.
+			// Make sure, that "shake" here matches used animation (is set couple of lines above)
+			if(e.originalEvent.animationName != 'shake') {
+				return;
+			}
 			$(this).removeClass('animated shake');
 
-			// Check if there is more questions and generate next problem 
+			// Show the same problem again
 			// Also check that we have enought lifes to continue
-			if(self.currentQuestion < self.data.length && self.lifes >= 0) {
+			if(self.lifes > 0) {
 				self.nextProblem(); 
 			}
 			// If that was the last problem, submit in mark of gameover
@@ -285,14 +313,42 @@ NumberComposition.prototype.wrongAnswer = function(answers) {
 				self.gameOver();
 			}
 	});
+}
 
-	
+NumberComposition.prototype.startTimer = function() {
+	var self = this; 
+
+	// span called .timerContainer is a placeholder for timer
+	// class .timer will animate the timer
+	$('.timerContainer').addClass('timer'); 
+
+	// Set proper duration for the timer
+	$('.timer').css({
+		'animation-duration': self.time + 's'
+	});
+
+	// Listen to the timer, if it finishes
+	// If the .timer class is removed before the animation reaches the end, this is never called
+	$('.timer').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+		// When animation end fires, this function is executed
+		function(e) {
+			console.log("timer end");			
+			// call wrongAnswer when time ends
+			self.wrongAnswer(['time ended']);
+	});
+}
+
+NumberComposition.prototype.stopTimer = function() {
+	var self = this;
+	console.log("stopping");
+	// Remove animation
+	$('.timerContainer').removeClass('timer');
 }
 
 NumberComposition.prototype.gameOver = function() {
 	var self = this; 
 
-	self.gameOver = true; 
+	self.isGameOver = true; 
 	self.parent.html('');
 
 	self.submit();
@@ -301,7 +357,9 @@ NumberComposition.prototype.gameOver = function() {
 NumberComposition.prototype.updateLifes = function() {
 	var self = this; 
 
-	self.lifes--; 
+	if(self.lifes > 0) {
+		self.lifes--; 
+	}
 	// Update lifes for the player to see
 	$('.lifes').html(self.lifes); 
 }

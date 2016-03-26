@@ -13,6 +13,8 @@ Verify changes:
 git remote -v
 ```
 
+Open the index.html in browser and start playing/hacking!
+
 ## Game logic
 The player tries to get the target value shown on the play area using numbers given in options. There operation to combine numbers can be addition, subtraction, division or multiplication. That is defined separately in each problem in the dataset.
 
