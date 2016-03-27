@@ -27,6 +27,13 @@ In addition and multiplication, the player gets a wrong answer, if the combined 
 * [CSS3 Cheat sheet](http://www.lesliefranke.com/files/reference/csscheatsheet.html) Basic CSS commands
 * [W3Schools](http://www.w3schools.com/css/) Lots of examples  
 
+## The structure 
+Drawn with [Draw.io](http://draw.io) 
+
+See more on styling by reading the comments in **base_theme.css**
+
+![CSS-Elements](https://cdn.rawgit.com/changty/number-composition/master/CSS-NC.svg)
+
 ## The Flow 
 Drawn with [Draw.io](http://draw.io) 
 

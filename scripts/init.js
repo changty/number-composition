@@ -44,7 +44,7 @@ function startGame() {
 		// Add as many you need in your game, these are just examples
 		lifes: 3, 			// How many tries?
 		time: 10,			// Time to answer the question (find the target number),
-		useTimer: true		// Use timer or not (true/false)		
+		useTimer: false		// Use timer or not (true/false)		
 	}
 
 	// crate new instance of the game. 
