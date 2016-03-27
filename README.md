@@ -30,5 +30,5 @@ In addition and multiplication, the player gets a wrong answer, if the combined 
 ## The Flow 
 Drawn with [Draw.io](http://draw.io) 
 
-![Flow chart](https://cdn.rawgit.com/changty/number-compositions/master/number-sompositions.svg)
+![Flow chart](https://cdn.rawgit.com/changty/number-composition/master/number-compositions.svg)
 
