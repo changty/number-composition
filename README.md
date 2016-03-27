@@ -1,4 +1,4 @@
-# Number composition -game
+# Number compositions -game
 This is a simple javascript game that works as an example in **ViLLE Edugame Hackathon 2016** and is the basis for theming competition. 
 
 To get started, clone this project and change the remote to use your own git account. 
@@ -27,10 +27,27 @@ In addition and multiplication, the player gets a wrong answer, if the combined 
 * [CSS3 Cheat sheet](http://www.lesliefranke.com/files/reference/csscheatsheet.html) Basic CSS commands
 * [W3Schools](http://www.w3schools.com/css/) Lots of examples  
 
+## Graphics
+* [Awesome game art tutorials](http://www.2dgameartguru.com/) for GIMP and Inkscape
+* [Keynney graphics](http://www.kenney.nl/) (Public domain assets, high quality)  
+* [OpenGameArt.org](http://opengameart.org/) 
+* [Pixabay](https://pixabay.com/)
+
+**Remeber to only use assets that are public domain, CC0 or similarly licenced**
+
+## Recommended software
+* [SublimeText3](https://www.sublimetext.com/3) Epic code editor
+* [Inkscape](https://inkscape.org/en/) Open source vector graphics editor
+* [GIMP](https://www.gimp.org/) Free image editor
+
+## Sounds
+* [Freesound.org](https://www.freesound.org/) 
+
 ## The Structure 
 Drawn with [Draw.io](http://draw.io) 
 
 See more on styling by reading the comments in **base_theme.css**
+[Editing styles in realtime using Chrome's developer tools.](https://developer.chrome.com/devtools)
 
 ![CSS-Elements](https://cdn.rawgit.com/changty/number-composition/master/CSS-NC.svg)
 
