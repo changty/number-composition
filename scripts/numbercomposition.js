@@ -103,7 +103,7 @@ NumberComposition.prototype.drawGameArea = function() {
 // and show question (the target number)
 NumberComposition.prototype.nextProblem = function() {
 	var self = this; 
-	console.log("nextProblem");
+
 	self.currentData = self.data[self.currentQuestion]; 
 
 	// Update options
