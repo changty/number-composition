@@ -38,7 +38,7 @@ In addition and multiplication, the player gets a wrong answer, if the combined 
 ## Recommended software
 * [SublimeText3](https://www.sublimetext.com/3) Epic code editor
 * [Inkscape](https://inkscape.org/en/) Open source vector graphics editor
-* [GIMP](https://www.gimp.org/) Free image editor
+* [GIMP](https://www.gimp.org/) Free image editor
 
 ## Sounds
 * [Freesound.org](https://www.freesound.org/) 
