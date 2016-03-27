@@ -1,5 +1,5 @@
 # Number compositions -game
-This is a simple javascript game that works as an example in **ViLLE Edugame Hackathon 2016** and is the basis for theming competition. 
+This is a simple javascript game that works as an example in [ViLLE Edugame Hackathon 2016](http://villeteam.fi/en/hackathon) and is the basis for theming competition. 
 
 To get started, clone this project and change the remote to use your own git account. 
 ```
