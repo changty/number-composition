@@ -50,6 +50,8 @@ See more on styling by reading the comments in **base_theme.css**
 
 [Editing styles in realtime using Chrome's developer tools.](https://developer.chrome.com/devtools)
 
+
+
 ![CSS-Elements](https://cdn.rawgit.com/changty/number-composition/master/CSS-NC.svg)
 
 ## The Flow 
