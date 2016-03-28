@@ -97,6 +97,7 @@ html, body {
 	display: inline-block;
 	height: 100%;
 	margin: auto;
+	max-width: 100vmin;
 	text-align: center;
 }
 
@@ -145,9 +146,9 @@ html, body {
 	top: 10vmin;
 	left: 50%;
 
-	margin-left: -12.5vmin;
-	width: 25vmin;
-	height: 25vmin;
+	margin-left: -10vmin;
+	width: 20vmin;
+	height: 20vmin;
 
 	/* RGB colors and opacity. 0 full opacity, 1 no opacity */
 	background: rgba(200,200,200, .8);
@@ -170,7 +171,7 @@ html, body {
 	z-index: 2; /* .value before .timer */
 
 	/* for text */
-	line-height: 25vmin;
+	line-height: 20vmin;
 	text-align:center;
 	font-size: 10vmin;
 	font-family: "Luckiest Guy", Arial, Verdana, Tahoma;
@@ -213,14 +214,14 @@ html, body {
 */
 .currentValue {
 	position: absolute;
-	top: 40vmin;
+	top: 35vmin;
 	left: 50%;
 
-	margin-left: -8.5vmin;
-	width: 17vmin;
-	height: 17vmin;
+	margin-left: -7.5vmin;
+	width: 15vmin;
+	height: 15vmin;
 
-	line-height: 17vmin;
+	line-height: 15vmin;
 	text-align:center;
 	font-size: 8vmin;
 	font-family: "Luckiest Guy", Arial, Verdana, Tahoma;
@@ -293,4 +294,34 @@ html, body {
     	height: 0%;
     	background: #c0392b;
     }
+}
+
+/* smartphones, iPhone, portrait 480x320 phones */ 
+@media (min-width:320px) { 
+
+}
+
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+@media (min-width:481px) {
+
+}
+
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+@media (min-width:641px) {
+
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */ 
+@media (min-width:961px) {
+
+}
+
+/* big landscape tablets, laptops, and desktops */ 
+@media (min-width:1025px) {
+
+}
+
+/* hi-res laptops and desktops */ 
+@media (min-width:1281px) {
+
 }
