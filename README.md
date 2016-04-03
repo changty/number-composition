@@ -28,7 +28,7 @@ In addition and multiplication, the player gets a wrong answer, if the combined 
 * [W3Schools](http://www.w3schools.com/css/) Lots of examples  
 
 ## Graphics
-* [Awesome game art tutorials](http://www.2dgameartguru.com/) for GIMP and Inkscape
+* [Awesome game art tutorials](http://www.2dgameartguru.com/) for GIMP and Inkscape
 * [Keynney graphics](http://www.kenney.nl/) (Public domain assets, high quality)  
 * [OpenGameArt.org](http://opengameart.org/) 
 * [Pixabay](https://pixabay.com/)
