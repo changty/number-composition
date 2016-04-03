@@ -97,7 +97,7 @@ html, body {
 	display: inline-block;
 	height: 100%;
 	margin: auto;
-	max-width: 100vmin;
+	max-width: 100vmin; /* only 5 buttons in a row */
 	text-align: center;
 }
 
@@ -254,6 +254,51 @@ html, body {
 	font-family: "Luckiest Guy", Arial, Verdana, Tahoma;
 	color: #f1f1f1;
 
+}
+
+/* 
+	Styles for progressbar 
+*/
+/* The outer container for progress*/
+.progressbar {
+    position:absolute;
+    top: 1vh;
+
+    /* Centerize the container using left and translateX */
+    left: 50vw;
+    transform: translateX(-50%);
+    
+    width: 50vw;
+    height: 2vh;
+
+    background: #333;
+    border: 0.2vh solid #999;
+    border-radius:1em 1em 1em 1em;
+}
+
+/* The bar that incseases when player makes progress */
+.progressbar span {
+    display:block;
+    content: "";
+
+    position: absolute;
+    top: 0vh;
+    left: 0vh;
+ 
+    height: 1.8vh;
+    width: 0%;
+    
+    max-width: 50vw;
+    max-width: 100%;
+    background: #999;
+    border-radius: 0.6em 0.6em 0.6em 0.6em;
+
+    /* Animate the progress */
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
 }
 
 

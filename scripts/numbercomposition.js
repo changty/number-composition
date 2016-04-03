@@ -97,6 +97,11 @@ NumberComposition.prototype.drawGameArea = function() {
 	// Add currentValue to gamearea
 	self.parent.append(self.lifesContainer);
 
+	// Progressbar
+	self.progressbar = $('<div class="progressbar"><span></span></div>');
+	// Add progressbar to gamearea
+	self.parent.append(self.progressbar);  
+
 }	
 
 // Read next problem from data and create corresponding options
@@ -250,8 +255,10 @@ NumberComposition.prototype.correctAnswer = function(answers) {
 		self.stopTimer();
 	}
 
-	console.log("correct answer"); 
 	self.currentQuestion++; 
+
+	// Update progressbar
+	self.setProgress(); 
 
 	// Save the answer
 	self.sendAnswer({problem: self.currentData, answer: answers});
@@ -278,7 +285,6 @@ NumberComposition.prototype.correctAnswer = function(answers) {
 // Handle wrong answer. Wrong answer will loose one life and will start current level all over again
 NumberComposition.prototype.wrongAnswer = function(answers) {
 	var self = this; 
-	console.log("wrong answer");
 
 	if(self.useTimer) {
 		self.stopTimer();
@@ -332,7 +338,6 @@ NumberComposition.prototype.startTimer = function() {
 	$('.timer').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
 		// When animation end fires, this function is executed
 		function(e) {
-			console.log("timer end");			
 			// call wrongAnswer when time ends
 			self.wrongAnswer(['time ended']);
 	});
@@ -340,7 +345,7 @@ NumberComposition.prototype.startTimer = function() {
 
 NumberComposition.prototype.stopTimer = function() {
 	var self = this;
-	console.log("stopping");
+
 	// Remove animation
 	$('.timerContainer').removeClass('timer');
 }
@@ -397,6 +402,14 @@ NumberComposition.prototype.drawStartScreen = function() {
 			$('.startButton').click(); 
 		}
 	});
+}
+
+// Update progressbar using this function. 
+NumberComposition.prototype.setProgress = function() {
+    var self = this;
+
+    // Set the width of the span inside .progressbar to match the player's progress from 0 to 100%.
+    self.progressbar.find('span').width((self.currentQuestion)/self.data.length * 100 + "%")
 }
 
 // Load the base_theme.css and set theme, if available.
